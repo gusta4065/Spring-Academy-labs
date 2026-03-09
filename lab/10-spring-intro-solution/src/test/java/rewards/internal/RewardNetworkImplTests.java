@@ -22,6 +22,7 @@ import common.money.MonetaryAmount;
  * Besides helping catch bugs early, tests are a great way for a new developer to learn an API as he or she can see the
  * API in action. Tests also help validate a design as they are a measure for how easy it is to use your code.
  */
+
 public class RewardNetworkImplTests {
 
 	/**
