@@ -10,8 +10,7 @@
 			"version": "none",
 			"installMaven": "false",
 			"installGradle": "true"
-		},
-		"ghcr.io/devcontainers-extra/features/gradle-sdkman:2": {}
+		}
 	}
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
