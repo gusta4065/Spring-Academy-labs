@@ -69,5 +69,8 @@ public class RewardNetworkImplTests {
 		// each distribution should be 4.00 (as both have a 50% allocation)
 		assertEquals(MonetaryAmount.valueOf("4.00"), contribution.getDistribution("Annabelle").getAmount());
 		assertEquals(MonetaryAmount.valueOf("4.00"), contribution.getDistribution("Corgan").getAmount());
+
+
+		 System.out.println("Eu adicionei esse comentario ");
 	}
 }
