@@ -12,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * Unit test the Spring configuration class to ensure it is creating the right
  * beans.
  */
+
+
+
 @SuppressWarnings("unused")
 public class RewardsConfigTests {
 	// Provide a mock object for testing
