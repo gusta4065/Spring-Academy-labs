@@ -71,6 +71,5 @@ public class RewardNetworkImplTests {
 		assertEquals(MonetaryAmount.valueOf("4.00"), contribution.getDistribution("Corgan").getAmount());
 
 
-		 System.out.println("Eu adicionei esse comentario ");
 	}
 }
