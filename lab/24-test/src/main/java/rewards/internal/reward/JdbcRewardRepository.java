@@ -3,8 +3,12 @@ package rewards.internal.reward;
 import common.datetime.SimpleDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.context.annotation.Profile;
+
+
 import rewards.AccountContribution;
 import rewards.Dining;
 import rewards.RewardConfirmation;
@@ -16,6 +20,8 @@ import java.sql.*;
  * JDBC implementation of a reward repository that records the result of a reward transaction by inserting a reward
  * confirmation record.
  */
+
+@Profile("jdbc")
 @Repository
 public class JdbcRewardRepository implements RewardRepository {
 
