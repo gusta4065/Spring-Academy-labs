@@ -5,8 +5,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -83,19 +86,26 @@ import static org.junit.jupiter.api.Assertions.*;
  * - Run the test again.
  */
 
+@SpringJUnitConfig(classes=TestInfrastructureConfig.class)
+//@ActiveProfiles("stub")
+//@ActiveProfiles("jdbc")
+//@ActiveProfiles({"local", "jdbc"})
+@ActiveProfiles({ "jdbc", "jndi" })
 public class RewardNetworkTests {
 
 	
 	/**
 	 * The object being tested.
 	 */
+
+	@Autowired
 	private RewardNetwork rewardNetwork;
 
 	/**
 	 * Need this to enable clean shutdown at the end of the application
 	 */
 	private ConfigurableApplicationContext context;
-
+	/**
 	@BeforeEach
 	public void setUp() {
 		// Create the test configuration for the application from one file
@@ -110,6 +120,7 @@ public class RewardNetworkTests {
 		if (context != null)
 			context.close();
 	}
+	*/
 
 	@Test
 	@DisplayName("Test if reward computation and distribution works")

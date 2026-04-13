@@ -16,13 +16,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
+import org.springframework.context.annotation.Profile;
 
 import common.money.Percentage;
 
 /**
  * Loads restaurants from a data source using the JDBC API.
  */
+
 @Repository
+@Profile("jdbc")
 public class JdbcRestaurantRepository implements RestaurantRepository {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
