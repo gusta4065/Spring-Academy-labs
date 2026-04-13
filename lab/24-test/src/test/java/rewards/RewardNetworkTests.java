@@ -87,11 +87,10 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 
 @SpringJUnitConfig(classes=TestInfrastructureConfig.class)
-
 //@ActiveProfiles("stub")
 //@ActiveProfiles("jdbc")
 //@ActiveProfiles({"local", "jdbc"})
-@ActiveProfiles({ "jndi", "jdbc" })
+@ActiveProfiles({ "jdbc", "jndi" })
 public class RewardNetworkTests {
 
 	

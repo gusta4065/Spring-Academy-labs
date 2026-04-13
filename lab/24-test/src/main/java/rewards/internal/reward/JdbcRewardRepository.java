@@ -21,8 +21,8 @@ import java.sql.*;
  * confirmation record.
  */
 
-@Profile("jdbc")
 @Repository
+@Profile("jdbc")
 public class JdbcRewardRepository implements RewardRepository {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());

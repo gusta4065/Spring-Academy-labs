@@ -17,8 +17,9 @@ import rewards.internal.reward.RewardRepository;
  * A dummy reward repository implementation.
  */
 
-@Profile("stub")
 @Repository //("rewardRepository")
+@Profile("stub")
+
 
 public class StubRewardRepository implements RewardRepository {
 

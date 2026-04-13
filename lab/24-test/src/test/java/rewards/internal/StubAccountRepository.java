@@ -24,8 +24,9 @@ import common.money.Percentage;
  * dependencies such as a Database. Simple unit tests can then verify object
  * behavior by considering the state of this stub.
  */
-@Profile("stub")
+
 @Repository //("accountRepository")
+@Profile("stub")
 public class StubAccountRepository implements AccountRepository {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());

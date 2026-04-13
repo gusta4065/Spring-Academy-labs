@@ -28,8 +28,8 @@ import common.money.Percentage;
  */
 
 
-@Profile("stub")
 @Repository //("restaurantRepository")
+@Profile("stub")
 public class StubRestaurantRepository implements RestaurantRepository {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());

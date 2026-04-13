@@ -24,8 +24,8 @@ import common.money.Percentage;
  * Loads restaurants from a data source using the JDBC API.
  */
 
-@Profile("jdbc")
 @Repository
+@Profile("jdbc")
 public class JdbcRestaurantRepository implements RestaurantRepository {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
