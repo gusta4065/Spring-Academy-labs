@@ -33,10 +33,11 @@ public class JdbcAccountRepository implements AccountRepository {
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate;
 
-	public JdbcAccountRepository(DataSource dataSource) {
+	public JdbcAccountRepository(JdbcTemplate jdbcTemplate) {
 
 		 this.dataSource = dataSource;
-		 this.jdbcTemplate = new JdbcTemplate(dataSource);
+		 //this.jdbcTemplate = new JdbcTemplate(dataSource);
+		 this.jdbcTemplate = jdbcTemplate;
 	}
 
 	// TODO-07 (Optional): Refactor this method using JdbcTemplate and ResultSetExtractor
@@ -88,14 +89,16 @@ public class JdbcAccountRepository implements AccountRepository {
 //				}
 //			}
 //		}
-		 return jdbcTemplate.query(sql,
-					new ResultSetExtractor<Account>() {
-						 @Override
-						 public Account extractData(ResultSet rs) throws SQLException, DataAccessException {
-							  return mapAccount(rs);
-						 }
-					},creditCardNumber);
+		 return  jdbcTemplate.query(sql, this::mapAccount,creditCardNumber);
+//		 return jdbcTemplate.query(sql,
+//					new ResultSetExtractor<Account>() {
+//						 @Override
+//						 public Account extractData(ResultSet rs) throws SQLException, DataAccessException {
+//							  return mapAccount(rs);
+//						 }
+//					},creditCardNumber);
 		//return jdbcTemplate.query(sql, (ResultSetExtractor<Account>) rs -> mapAccount(rs),creditCardNumber);
+
 	}
 
 	// TODO-06: Refactor this method to use JdbcTemplate.

@@ -79,9 +79,9 @@ public class JdbcRewardRepository implements RewardRepository {
 
 	private String nextConfirmationNumber() {
 		String sql = "select next value for S_REWARD_CONFIRMATION_NUMBER from DUAL_REWARD_CONFIRMATION_NUMBER";
-		String nextValue;
 		/**
-		try (Connection conn = dataSource.getConnection(); 
+		String nextValue;
+		try (Connection conn = dataSource.getConnection();
 			 PreparedStatement ps = conn.prepareStatement(sql);
 			 ResultSet rs = ps.executeQuery()) {
 			rs.next();

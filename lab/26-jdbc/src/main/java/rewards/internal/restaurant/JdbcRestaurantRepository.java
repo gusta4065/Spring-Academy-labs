@@ -63,15 +63,14 @@ public class JdbcRestaurantRepository implements RestaurantRepository {
 //			throw new RuntimeException("SQL exception occurred finding by merchant number", e);
 //		}
 
-		return jdbcTemplate.queryForObject(sql,
-				  (rs, rowNum) -> mapRestaurant(rs), merchantNumber);
+		return jdbcTemplate.queryForObject(sql, this::mapRestaurant, merchantNumber);
 	}
 
 	/**
 	 * Maps a row returned from a query of T_RESTAURANT to a Restaurant object.
 	 * @param rs the result set with its cursor positioned at the current row
 	 */
-	private Restaurant mapRestaurant(ResultSet rs) throws SQLException {
+	private Restaurant mapRestaurant(ResultSet rs, int rowNum) throws SQLException {
 		// Get the row column data
 		String name = rs.getString("NAME");
 		String number = rs.getString("MERCHANT_NUMBER");
