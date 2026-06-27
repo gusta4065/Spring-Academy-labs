@@ -15,18 +15,20 @@ import rewards.internal.reward.JdbcRewardRepository;
 import rewards.internal.reward.RewardRepository;
 
 import javax.sql.DataSource;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 
 @Configuration
 public class RewardsConfig {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	DataSource dataSource;
+	/*DataSource dataSource;
 
 	@Autowired  // This @Autowired annotation is optional here
 	public RewardsConfig(DataSource dataSource) {
 		this.dataSource = dataSource;
-	}
+	}*/
+    private DataSource dataSource;
 
     // TODO-10 (Optional) : Switch back to explicit `DataSource` configuration
     // (Instead of using auto-configured DataSource, we are going to configure
@@ -37,19 +39,18 @@ public class RewardsConfig {
     // - Uncomment @Bean method below
     // - Remove the code above that performs DataSource injection
     // - Fix compile errors in this code
-    /*
+    
     @Bean
     public DataSource dataSource() {
         logger.debug("Creating the datasource bean explicitly");
 
-        return
-                (new EmbeddedDatabaseBuilder())
+        this.dataSource= (new EmbeddedDatabaseBuilder())
                         .addScript("classpath:schema.sql")
                         .addScript("classpath:data.sql")
                         .build();
+        return this.dataSource; 
     }
-    */
-
+    
     @Bean
     public RewardNetwork rewardNetwork() {
         return new RewardNetworkImpl(

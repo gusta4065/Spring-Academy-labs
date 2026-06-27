@@ -1,8 +1,16 @@
 package rewards;
 
+import org.springframework.context.annotation.Bean;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+
 
 // TODO-00 : In this lab, you are going to exercise the following:
 // - Understanding how auto-configuration is triggered in Spring Boot application
@@ -21,20 +29,21 @@ import org.springframework.boot.SpringApplication;
 
 // --------------------------------------------
 
-// TODO-11 (Optional) : Disable 'DataSource' auto-configuration
-// - Note that you are using your own 'DataSource' bean now
-//   instead of auto-configured one
-// - Use 'exclude' attribute of '@SpringBootApplication'
-//   excluding 'DataSourceAutoConfiguration' class
-// - Run this application and observe a failure
-// - Import 'RewardsConfig' class
-// - Run this application again and observe a successful execution
+    // TODO-11 (Optional) : Disable 'DataSource' auto-configuration
+    // - Note that you are using your own 'DataSource' bean now
+    //   instead of auto-configured one
+    // - Use 'exclude' attribute of '@SpringBootApplication'
+    //   excluding 'DataSourceAutoConfiguration' class
+    // - Run this application and observe a failure
+    // - Import 'RewardsConfig' class
+    // - Run this application again and observe a successful execution
 
 // TODO-12 (Optional) : Look in application.properties for the next step.
 
 // TODO-13 (Optional) : Follow the instruction in the lab document.
 //           The section titled "Build and Run using Command Line tools".
-
+@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
+@EnableConfigurationProperties(RewardsRecipientProperties.class)
 public class RewardsApplication {
     static final String SQL = "SELECT count(*) FROM T_ACCOUNT";
 
@@ -44,6 +53,23 @@ public class RewardsApplication {
     public static void main(String[] args) {
         SpringApplication.run(RewardsApplication.class, args);
     }
+
+    /*@Bean
+    public CommandLineRunner commandLineRunner(JdbcTemplate jdbcTemplate){
+        return args -> {
+            long numberOfAccounts = jdbcTemplate.queryForObject(SQL,Long.class);
+            logger.info("Hello, there are {} accounts",numberOfAccounts);
+        };
+    }*/
+
+    @Bean
+    public CommandLineRunner commandLineRunner2(RewardsRecipientProperties rewardsRecipientProperties){
+        return args ->{
+            System.out.println("Recipient: "+ rewardsRecipientProperties.getName());
+        };
+    }
+
+
 
     // TODO-04 : Let Spring Boot execute database scripts
     // - Move the SQL scripts (schema.sql and data.sql)
